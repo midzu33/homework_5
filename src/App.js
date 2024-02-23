@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
+export default function Form() {
+  const [form, setForm] = useState({
+    firstName: 'Stanford',
+    lastName: 'Stanly',
+    email: 'Stanly@ford.com',
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <>
+        <label>
+          First name:
+          <input
+              value={form.firstName}
+              onChange={(e) => {
+                setForm({
+                  ...form,
+                  firstName: e.target.value,
+                });
+              }}
+          />
+        </label>
+        <label>
+          Last name:
+          <input
+              value={form.lastName}
+              onChange={(e) => {
+                setForm({
+                  ...form,
+                  lastName: e.target.value,
+                });
+              }}
+          />
+        </label>
+        <label>
+          Email:
+          <input
+              value={form.email}
+              onChange={(e) => {
+                setForm({
+                  ...form,
+                  email: e.target.value,
+                });
+              }}
+          />
+        </label>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {form.firstName}{form.lastName} (
+          {form.email})
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      </>
   );
 }
-
-export default App;
